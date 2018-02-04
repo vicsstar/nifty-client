@@ -35,11 +35,13 @@ class PublicChat extends Component {
     }
 
     if (nextState.users !== this.state.users) {
-      const user = nextState.users.find(u => u.roomId === roomId);
+      // finds users specific to this room (Members).
+      // const user = nextState.users.find(u => u.roomId === roomId);
 
-      if (user) {
-        this.setState({ users: nextState.users });
-      }
+      // for the sake of being "like Slack".
+      // if (user) {
+      this.setState({ users: nextState.users });
+      // }
     }
   }
 
@@ -95,7 +97,7 @@ class PublicChat extends Component {
             e.preventDefault();
             this.setState({chatMode: !this.state.chatMode})
           }}>
-          {this.state.chatMode ? 'Members' : 'Back to Chat'}
+          {this.state.chatMode ? 'Users' : 'Back to Chat'}
           </a>
         </h2>
         {viewToRender}

@@ -1,0 +1,22 @@
+.add-user {
+  align-content: center;
+  text-align: left;
+  margin-top: -50px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  justify-content: center;
+}
+
+.add-user .greeting {
+  font-size: 22px;
+  margin-bottom: 10px;
+}
+
+.add-user .nickname {
+  font-size: 18px;
+  padding: 12px 10px;
+  margin-bottom: 12px;
+  border: 0.5pt solid #979797;
+  border-radius: 3px;
+}

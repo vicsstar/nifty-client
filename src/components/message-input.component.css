@@ -1,0 +1,14 @@
+.message-input-view {
+  display: flex;
+  flex: 1;
+  justify-content: space-between;
+}
+
+.message-input-view .message-input {
+  font-size: 14px;
+  width: 100vw;
+  padding: 10px;
+  margin-right: 10px;
+  border: 0.5px solid #EAEAEA;
+  border-radius: 3px;
+}

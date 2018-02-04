@@ -1,0 +1,9 @@
+.empty-item {
+  align-self: center;
+  list-style: none;
+  color: #c0c0c0;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: center;
+}

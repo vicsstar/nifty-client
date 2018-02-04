@@ -1,0 +1,17 @@
+#private-chat {
+  display: flex;
+  overflow-y: hidden;
+  flex-direction: column;
+  flex: 1;
+  justify-content: space-between;
+}
+
+#private-chat .heading > a {
+  font-size: 20px;
+  color: #92C1FF;
+  text-decoration: none;
+}
+
+#private-chat .heading > a:visited {
+  color: #92C1FF;
+}

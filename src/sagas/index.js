@@ -11,15 +11,15 @@ function* watchAll(params) {
       params.socket.send(action);
     }),
     takeEvery(types.NEW_MESSAGE, action => {
-      const { author, message, id, roomId, isPrivate } = action;
+      const { author, message, id, roomId, isPrivate, time } = action;
       return {
-        message: { author, message, id, roomId, isPrivate }
+        message: { author, message, id, roomId, isPrivate, time }
       };
     }),
     takeEvery(types.OWN_NEW_MESSAGE, action => {
-      const { author, message, id, roomId, isPrivate } = action;
+      const { author, message, id, roomId, isPrivate, time } = action;
       return {
-        message: { author, message, id, roomId, isPrivate }
+        message: { author, message, id, roomId, isPrivate, time }
       };
     }),
     takeEvery(types.ROOM_JOIN, action => {

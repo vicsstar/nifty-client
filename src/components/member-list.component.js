@@ -1,12 +1,9 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 import './member-list.component.css';
 
 class MemberList extends Component {
-  componentWillUpdate(ns) {
-    console.log(ns.users);
-  }
-
   isMe(nickname) {
     return nickname === this.props.nickname;
   }
@@ -34,5 +31,14 @@ class MemberList extends Component {
     );
   }
 }
+
+MemberList.propTypes = {
+  nickname: PropTypes.string.isRequired,
+  users: PropTypes.arrayOf(
+    PropTypes.shape({
+      nickname: PropTypes.string.isRequired
+    })
+  ).isRequired
+};
 
 export default MemberList;

@@ -7,6 +7,7 @@ const messages = (state = [], data) => {
         {
           message: data.message,
           author: data.author,
+          time: data.time,
           roomId: data.roomId,
           isPrivate: data.isPrivate,
           id: data.id
@@ -17,6 +18,7 @@ const messages = (state = [], data) => {
         {
           message: data.message,
           author: data.author,
+          time: data.time,
           roomId: data.roomId,
           isPrivate: data.isPrivate,
           id: data.id

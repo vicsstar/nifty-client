@@ -1,5 +1,4 @@
 import React from 'react';
-import createBrowserHistory from 'history/createBrowserHistory';
 import Enzyme, { mount } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import ChatRoom from '../components/chat-room.component';
@@ -9,7 +8,8 @@ const setup = () => {
     messages: [],
     displayName: 'vicsstar',
     nickname: 'vicsstar',
-    addMessage: jest.fn()
+    addMessage: jest.fn(),
+    addOwnMessage: jest.fn()
   };
 
   Enzyme.configure({ adapter: new Adapter() });

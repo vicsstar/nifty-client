@@ -7,7 +7,7 @@ import EmptyItem from './empty-item.component';
 import './chat-room.component.css';
 
 class ChatRoom extends Component {
-  componentWillUpdate(nextState) {
+  componentWillUpdate() {
     setTimeout(() => {
       if (this.refs.messagesView) {
         this.refs.messagesView.lastElementChild.scrollIntoView();
@@ -50,7 +50,8 @@ ChatRoom.propTypes = {
   ).isRequired,
   displayName: PropTypes.string.isRequired,
   nickname: PropTypes.string.isRequired,
-  addMessage: PropTypes.func.isRequired
+  addMessage: PropTypes.func.isRequired,
+  addOwnMessage: PropTypes.func.isRequired
 }
 
 export default ChatRoom;

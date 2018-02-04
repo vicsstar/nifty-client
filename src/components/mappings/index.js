@@ -17,7 +17,8 @@ export default dispatch => ({
       data.message,
       data.nickname,
       data.roomId,
-      data.isPrivate
+      data.isPrivate,
+      data.time
     );
     dispatch(message);
     return message;

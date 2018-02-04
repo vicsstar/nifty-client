@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Route, Redirect } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import { addUser } from '../actions';
 
 import './add-user.component.css';
@@ -41,8 +42,11 @@ class AddUser extends Component {
 const mapDispatchToProps = dispatch => ({
   addUser: nickname => {
     dispatch(addUser(nickname));
-  },
-  onButtonClick: () => {}
+  }
 });
+
+AddUser.propTypes = {
+  addUser: PropTypes.func.isRequired
+}
 
 export default connect(() => ({}), mapDispatchToProps)(AddUser);

@@ -16,6 +16,7 @@ class MessageInput extends Component {
     if (message) {
       const _msg = this.props.addMessage({
         nickname: this.props.nickname,
+        time: new Date().getTime(),
         message
       });
       this.props.addOwnMessage(_msg);

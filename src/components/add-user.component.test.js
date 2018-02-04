@@ -1,18 +1,18 @@
 import React from 'react';
 import { Router } from 'react-router-dom';
-import Enzyme, { mount } from 'enzyme';
+import Enzyme, { mount, shallow } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import AddUser from '../components/add-user.component';
 import { store } from './test-stubs';
 
-const setup = (push = jest.fn(), listen = jest.fn()) => {
+const setup = () => {
   const props = { store };
   const history = {
     location: {
       pathname: '/'
     },
-    push,
-    listen
+    push: jest.fn(),
+    listen: jest.fn()
   };
 
   Enzyme.configure({ adapter: new Adapter() });

@@ -3,9 +3,7 @@ import ReactDOM from 'react-dom';
 import { Route, BrowserRouter } from 'react-router-dom';
 import './index.css';
 import App from './App';
-import RoomList from './components/room-list.component';
-import PublicChat from './components/public-chat.component';
-import PrivateChat from './components/private-chat.component';
+import Chat from './components/chat.component';
 
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
@@ -29,15 +27,9 @@ sagaMiddleware.run(sagas, { socket });
 ReactDOM.render(
   <BrowserRouter>
     <Provider store={store}>
-      <div id="container">
-        <header><h3>Nifty</h3></header>
-        <section id="main">
-          <Route exact path="/" component={App} />
-          <Route exact path="/rooms" component={RoomList} />
-          <Route exact path="/rooms/:roomId/:roomName" component={PublicChat} />
-          <Route path="/private-chat/:nickname" component={PrivateChat} />
-          </section>
-        <footer></footer>
+      <div>
+        <Route exact path="/" component={App} />
+        <Route exact path="/chat/:nickname" component={Chat} />
       </div>
     </Provider>
   </BrowserRouter>,

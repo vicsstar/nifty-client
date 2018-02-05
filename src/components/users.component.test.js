@@ -1,7 +1,7 @@
 import React from 'react';
 import Enzyme, { mount } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
-import MemberList from '../components/member-list.component';
+import Users from '../components/users.component';
 
 const setup = (users = []) => {
   const props = {
@@ -11,7 +11,7 @@ const setup = (users = []) => {
 
   Enzyme.configure({ adapter: new Adapter() });
   const enzymeWrapper = mount(
-    <MemberList {...props} />
+    <Users {...props} />
   );
 
   return {
@@ -20,7 +20,7 @@ const setup = (users = []) => {
   };
 };
 
-describe('MemberList', () => {
+describe('Users', () => {
   it('should render itself', () => {
     const { enzymeWrapper } = setup();
 

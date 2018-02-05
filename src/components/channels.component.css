@@ -1,15 +1,21 @@
-#user-list {
+#channel-list {
+  padding-bottom: 19px;
   display: flex;
   flex-direction: column;
   flex: 1;
   justify-content: space-between;
 }
 
+#channel-list h4 {
+  color: #E4E4E4;
+  font-size: 16px;
+  font-weight: 300;
+}
+
 #user-list .items {
   width: 100%;
   margin-top: 20px;
   overflow-y: scroll;
-  border: 0.5px solid #E6E6E6;
   border-radius: 3px;
   text-align: left;
   align-self: center;
@@ -23,7 +29,6 @@
 
 #user-list .items li {
   font-size: 18px;
-  border-bottom: 0.5px solid #E6E6E6;
 }
 
 #user-list .items li:last-child {

@@ -6,7 +6,11 @@ import './App.css';
 class App extends Component {
   render() {
     return (
-      <AddUser/>
+      <div id="container">
+        <section id="main">
+          <AddUser />
+        </section>
+      </div>
     );
   }
 }

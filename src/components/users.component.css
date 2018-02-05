@@ -1,0 +1,13 @@
+#user-list {
+  padding-top: 19px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  justify-content: space-between;
+}
+
+#user-list h4 {
+  color: #E4E4E4;
+  font-size: 16px;
+  font-weight: 300;
+}

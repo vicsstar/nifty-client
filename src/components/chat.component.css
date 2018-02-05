@@ -1,0 +1,11 @@
+#chat {
+  align-self: center;
+  background-color: #F8F8F8;
+  border: 1px solid #E4E4E4;
+  width: 70vw;
+  height: 80vh;
+  display: flex;
+  flex-direction: row;
+  flex: 1;
+  justify-content: space-between;
+}

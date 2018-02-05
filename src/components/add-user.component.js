@@ -18,12 +18,13 @@ class AddUser extends Component {
     if (!nickname) return;
 
     this.props.addUser(nickname);
-    history.push('/rooms');
+    history.push('/chat');
   }
 
   render() {
-    if (localStorage.getItem('nickname')) {
-      return <Redirect to="/rooms"/>;
+    const nickname = localStorage.getItem('nickname');
+    if (nickname) {
+      return <Redirect to={`/chat/${nickname}`} />;
     }
 
     return (

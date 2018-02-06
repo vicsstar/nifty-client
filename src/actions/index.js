@@ -13,11 +13,11 @@ export const addMessage = (
 });
 
 export const addOwnMessage = (
-  { message, nickname, time, id, channelId, isPrivate
-}) => ({
+  { message, nickname, time, id, channelId, isPrivate }
+) => ({
   type: types.OWN_NEW_MESSAGE,
-  message: message.trim(),
   author: nickname,
+  message,
   channelId,
   isPrivate,
   time,

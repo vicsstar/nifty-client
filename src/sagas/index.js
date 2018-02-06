@@ -21,16 +21,11 @@ function* watchAll(params) {
       };
     }),
     takeEvery(types.OWN_NEW_MESSAGE, action => {
+      console.log('Reducer encountered.');
       const { author, message, id, channelId, isPrivate, time } = action;
       return {
         message: { author, message, id, channelId, isPrivate, time }
       };
-    }),
-    takeEvery(types.ROOM_JOIN, action => {
-      params.socket.send(action);
-    }),
-    takeEvery(types.ROOM_LEAVE, action => {
-      params.socket.send(action);
     }),
     takeEvery(types.CHANNEL_LIST, action => ({
       channels: action.channels

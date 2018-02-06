@@ -37,7 +37,8 @@ class ChatRoom extends Component {
         <ul className="messages-view" ref="messagesView">{messagesView}</ul>
         <MessageInput
           displayName={this.props.channel.name}
-          nickname={this.props.name}
+          nickname={this.props.nickname}
+          channelId={this.props.channel.id}
           addMessage={data => this.props.addMessage(data)}
           addOwnMessage={data => this.props.addOwnMessage(data)} />
       </div>

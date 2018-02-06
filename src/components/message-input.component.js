@@ -16,7 +16,9 @@ class MessageInput extends Component {
     if (message) {
       const _msg = this.props.addMessage({
         nickname: this.props.nickname,
+        channelId: this.props.channelId,
         time: new Date().getTime(),
+        isPrivate: this.props.channelId.indexOf('|') === -1,
         message
       });
       this.props.addOwnMessage(_msg);
@@ -47,7 +49,6 @@ class MessageInput extends Component {
               this.onSend();
             }
           }}></textarea>
-        <button className="btn-default" onClick={this.onSend}>SEND</button>
       </div>
     );
   }
@@ -56,6 +57,7 @@ class MessageInput extends Component {
 MessageInput.propTypes = {
   nickname: PropTypes.string.isRequired,
   displayName: PropTypes.string.isRequired,
+  channelId: PropTypes.string.isRequired,
   addMessage: PropTypes.func.isRequired,
   addOwnMessage: PropTypes.func.isRequired
 };

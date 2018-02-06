@@ -1,7 +1,18 @@
 #sidebar {
   border-color: 1px solid 292B39;
   background-color: #333647;
-  width: 15%;
+}
+
+@media(max-width: 1024px) {
+  #sidebar {
+    width: 20%;
+  }
+}
+
+@media(min-width: 1280px) {
+  #sidebar {
+    width: 15%;
+  }
 }
 
 #sidebar header {

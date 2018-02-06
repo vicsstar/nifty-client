@@ -30,7 +30,7 @@ ReactDOM.render(
     <Provider store={store}>
       <div>
         <Route exact path="/" component={App} />
-        <Route path="/chat/:nickname" render={() => <Chat dispatch={store.dispatch} />} />
+        <Route path="/chat/:nickname" component={Chat} />
       </div>
     </Provider>
   </HashRouter>,

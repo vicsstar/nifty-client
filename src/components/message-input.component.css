@@ -1,14 +1,17 @@
-/* .message-input-view {
+.message-input-view {
   display: flex;
-  flex: 1;
-  justify-content: space-between;
+  justify-content: center;
 }
 
 .message-input-view .message-input {
+  align-self: flex-end;
   font-size: 14px;
-  width: 100vw;
-  padding: 10px;
-  margin-right: 10px;
-  border: 0.5px solid #EAEAEA;
-  border-radius: 3px;
-} */
+  padding: 12px;
+  margin: 20px;
+  border: 2px solid #EAEAEA;
+  border-radius: 5px;
+  flex-grow: 1;
+  min-height: 48px;
+  height: 48px;
+  max-height: 200px;
+}

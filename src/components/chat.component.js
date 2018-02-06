@@ -4,7 +4,6 @@ import { withRouter, Redirect } from 'react-router-dom';
 import ChatRoom from './chat-room.component';
 import Sidebar from './sidebar.component';
 import mapDispatchToProps from './mappings';
-import { addUser, removeUser } from '../actions';
 
 import './chat.component.css';
 
@@ -24,7 +23,7 @@ class Chat extends Component {
     if (nextState.channels && nextState.channels !== this.state.channels) {
       let activeChannel = {};
 
-      if (nextState.channels.length !== 0) {
+      if (!this.state.activeChannel.id && nextState.channels.length !== 0) {
         activeChannel = nextState.channels[0];
       }
 
@@ -35,8 +34,7 @@ class Chat extends Component {
     }
 
     if (nextState.messages && nextState.messages !== this.state.messages) {
-      const filteredMessages = nextState.messages.filter(
-        message => message.channelId === this.state.activeChannel.id);
+      const filteredMessages = this.filterMessages(nextState.messages);
 
       this.setState({
         messages: nextState.messages,
@@ -47,25 +45,34 @@ class Chat extends Component {
     if (nextState.users && nextState.users !== this.state.users) {
       this.setState({ users: nextState.users });
     }
+    console.log(nextState.messages);
   }
 
   componentDidMount() {
     const nickname = this.props.match.params.nickname;
     if (nickname) {
-      this.props.dispatch(addUser(nickname));
+      this.props.addUser(nickname);
     }
   }
 
   componentWillUnmount() {
     const nickname = this.props.match.params.nickname;
     if (nickname) {
-      this.props.dispatch(removeUser(nickname));
+      this.props.removeUser(nickname);
     }
   }
 
+  filterMessages(messages) {
+    return messages.filter(message => (
+      message.channelId === this.state.activeChannel.id
+    ));
+  }
+
   openChannel(channel) {
+    const filteredMessages = this.filterMessages(this.state.messages);
     this.setState({
-      activeChannel: channel
+      activeChannel: channel,
+      filteredMessages
     });
   }
 

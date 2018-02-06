@@ -1,15 +1,16 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import Channel from './channel.component';
 
 import './users.component.css';
 
 class Users extends Component {
-  componentDidUpdate(state) {
-    console.log(state);
+  isMe(otherUserNickname) {
+    return otherUserNickname === this.props.nickname;
   }
 
-  isMe(nickname) {
-    return nickname === this.props.nickname;
+  composeChannelId(otherUserNickname) {
+    return [otherUserNickname, this.props.nickname].sort().join('|');
   }
 
   render() {
@@ -17,15 +18,23 @@ class Users extends Component {
       <div id="user-list">
         <h4>Direct Messages</h4>
         <ul className="items">
-        {
-          this.props.users.map(user => (
-            <li key={user.nickname} className={this.isMe(user.nickname) ? 'me': ''}>
-              <a href={`#/user/${user.nickname}`}>
-                {user.nickname} {this.isMe(user.nickname) ? ' (you)' : ''}
-              </a>
-            </li>
-          ))
-        }
+        {this.props.users.map(user => (
+          <Channel
+            classNames={
+              `${this.isMe(user.nickname) ? 'me': ''}
+              ${this.props.activeChannel.id === this.composeChannelId(user.nickname) ? ' selected': ''}`
+            }
+            key={user.nickname}
+            link={`#/user/${user.nickname}`}
+            name={`@${user.nickname} ${this.isMe(user.nickname) ? ' (you)' : ''}`}
+            onOpenChannel={data =>
+              this.props.onOpenChannel({
+                name: user.nickname,
+                id: this.composeChannelId(user.nickname)
+              })
+            }
+          />
+        ))}
         </ul>
       </div>
     );

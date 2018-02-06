@@ -10,58 +10,36 @@
   color: #E4E4E4;
   font-size: 16px;
   font-weight: 300;
+  padding: 0 17px 10px 17px;
+  padding-bottom: 10px;
 }
 
-#user-list .items {
-  width: 100%;
-  margin-top: 20px;
-  overflow-y: scroll;
-  border-radius: 3px;
-  text-align: left;
-  align-self: center;
+#channel-list .items {
   list-style: none;
-  flex-grow: 1;
-  display: flex;
-  flex: 1;
-  flex-direction: column;
-  justify-content: flex-start;
 }
 
-#user-list .items li {
-  font-size: 18px;
-}
-
-#user-list .items li:last-child {
-  border-bottom: none;
-}
-
-#user-list .items li a, #user-list .items li span {
+#channel-list .items li a {
   display: block;
-  padding: 13px 20px;
-  color: #4A4A4A;
+  padding: 0 17px;
+  color: #DFDFDF;
+  font-size: 14px;
+  font-weight: lighter;
   text-decoration: none;
+  line-height: 28px;
 }
 
-#user-list .items li span {
-  font-weight: bold;
+#channel-list .items li a:visited {
+  color: #DFDFDF;
 }
 
-#user-list .items li:hover span {
-  color: white;
+#channel-list .items li:hover {
+  background-color: #235280;
 }
 
-#user-list .items li a:visited {
-  color: #4A4A4A;
-}
-
-#user-list .items li:hover {
+#channel-list .items li:hover a {
   cursor: pointer;
-  background-color: #92C1FF;
-  border-color: #509CFF;
 }
 
-#user-list .items li:hover a {
-  color: white;
-  font-size: 17px;
-  font-weight: bold;
+#channel-list .items li.selected {
+  background-color: #4094ED;
 }

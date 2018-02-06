@@ -1,5 +1,5 @@
 #user-list {
-  padding-top: 19px;
+  padding-top: 10px;
   display: flex;
   flex-direction: column;
   flex: 1;
@@ -10,4 +10,36 @@
   color: #E4E4E4;
   font-size: 16px;
   font-weight: 300;
+  padding: 0 17px 10px 17px;
+  padding-bottom: 10px;
+}
+
+#user-list .items {
+  list-style: none;
+}
+
+#user-list .items li a {
+  display: block;
+  padding: 0 17px;
+  color: #DFDFDF;
+  font-size: 14px;
+  font-weight: lighter;
+  text-decoration: none;
+  line-height: 28px;
+}
+
+#user-list .items li a:visited {
+  color: #DFDFDF;
+}
+
+#user-list .items li:hover {
+  background-color: #235280;
+}
+
+#user-list .items li:hover a {
+  cursor: pointer;
+}
+
+#user-list .items li.selected {
+  background-color: #4094ED;
 }

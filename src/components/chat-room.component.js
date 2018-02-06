@@ -28,10 +28,16 @@ class ChatRoom extends Component {
 
     return (
       <div className="chat-view">
+        <header>
+          <h4>#{this.props.channel.name}</h4>
+          <p className={this.props.channel.description ? 'has-desc' : ''}>
+            {this.props.channel.description}
+          </p>
+        </header>
         <ul className="messages-view" ref="messagesView">{messagesView}</ul>
         <MessageInput
-          displayName={this.props.displayName}
-          nickname={this.props.nickname}
+          displayName={this.props.channel.name}
+          nickname={this.props.name}
           addMessage={data => this.props.addMessage(data)}
           addOwnMessage={data => this.props.addOwnMessage(data)} />
       </div>
@@ -48,8 +54,6 @@ ChatRoom.propTypes = {
       id: PropTypes.number.isRequired
     })
   ).isRequired,
-  displayName: PropTypes.string.isRequired,
-  nickname: PropTypes.string.isRequired,
   addMessage: PropTypes.func.isRequired,
   addOwnMessage: PropTypes.func.isRequired
 }

@@ -7,19 +7,23 @@ function* watchAll(params) {
       params.socket.send(action);
       localStorage.setItem('nickname', action.nickname);
     }),
+    takeEvery(types.USER_LEAVE, action => {
+      params.socket.send(action);
+      localStorage.removeItem('nickname');
+    }),
     takeEvery(types.MESSAGE_ADD, action => {
       params.socket.send(action);
     }),
     takeEvery(types.NEW_MESSAGE, action => {
-      const { author, message, id, roomId, isPrivate, time } = action;
+      const { author, message, id, channelId, isPrivate, time } = action;
       return {
-        message: { author, message, id, roomId, isPrivate, time }
+        message: { author, message, id, channelId, isPrivate, time }
       };
     }),
     takeEvery(types.OWN_NEW_MESSAGE, action => {
-      const { author, message, id, roomId, isPrivate, time } = action;
+      const { author, message, id, channelId, isPrivate, time } = action;
       return {
-        message: { author, message, id, roomId, isPrivate, time }
+        message: { author, message, id, channelId, isPrivate, time }
       };
     }),
     takeEvery(types.ROOM_JOIN, action => {
@@ -28,9 +32,9 @@ function* watchAll(params) {
     takeEvery(types.ROOM_LEAVE, action => {
       params.socket.send(action);
     }),
-    takeEvery(types.ROOM_LIST, action => {
-      return { rooms: action.rooms };
-    })
+    takeEvery(types.CHANNEL_LIST, action => ({
+      channels: action.channels
+    }))
   ]);
 }
 

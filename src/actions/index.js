@@ -1,27 +1,27 @@
 import * as types from '../actions/constants/action-types';
 
 export const addMessage = (
-  message, nickname, roomId, isPrivate, time
+  message, nickname, channelId, isPrivate, time
 ) => ({
   type: types.MESSAGE_ADD,
   message: message.trim(),
   id: Math.abs(Math.random(100000) * 100000),
   nickname,
-  time,
-  roomId,
-  isPrivate
+  channelId,
+  isPrivate,
+  time
 });
 
 export const addOwnMessage = (
-  { message, nickname, time, id, roomId, isPrivate
+  { message, nickname, time, id, channelId, isPrivate
 }) => ({
   type: types.OWN_NEW_MESSAGE,
   message: message.trim(),
   author: nickname,
-  time,
-  roomId,
+  channelId,
   isPrivate,
-  id,
+  time,
+  id
 });
 
 export const addUser = nickname => ({
@@ -29,9 +29,14 @@ export const addUser = nickname => ({
   nickname
 });
 
-export const addRoomList = rooms => ({
-  type: types.ROOM_LIST,
-  rooms: rooms
+export const removeUser = nickname => ({
+  type: types.USER_LEAVE,
+  nickname
+});
+
+export const addChannelList = channels => ({
+  type: types.CHANNEL_LIST,
+  channels
 });
 
 export const joinRoom = (roomId, nickname) => ({
@@ -40,7 +45,7 @@ export const joinRoom = (roomId, nickname) => ({
   nickname
 });
 
-export const leaveRoom = (nickname) => ({
+export const leaveRoom = nickname => ({
   type: types.ROOM_LEAVE,
   nickname
 });

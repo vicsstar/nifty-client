@@ -11,10 +11,19 @@ class Sidebar extends Component {
       <div id="sidebar">
         <header>
           <h3>Nifty PRO</h3>
-          <p>nickname</p>
+          <p>{this.props.nickname}</p>
         </header>
-        <Channels channels={[]} />
-        <Users users={[]} nickname={this.props.nickname} />
+        <Channels
+          channels={this.props.channels}
+          activeChannel={this.props.activeChannel}
+          onOpenChannel={data => this.props.onOpenChannel(data)}
+        />
+        <Users
+          users={this.props.users}
+          nickname={this.props.nickname}
+          activeChannel={this.props.activeChannel}
+          onOpenChannel={data => this.props.onOpenChannel(data)}
+        />
       </div>
     );
   }
@@ -32,7 +41,8 @@ Sidebar.propTypes = {
     PropTypes.shape({
       nickname: PropTypes.string.isRequired
     })
-  ).isRequired
+  ).isRequired,
+  onOpenChannel: PropTypes.func.isRequired
 };
 
 export default Sidebar;

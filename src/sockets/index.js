@@ -1,10 +1,9 @@
 import * as types from '../actions/constants/action-types';
 import {
   addUser,
-  addRoomList,
+  addChannelList,
   joinRoom
 } from '../actions';
-import { ROOM_JOIN } from '../actions/constants/action-types';
 
 const setupWebSocket = (dispatch) => {
   this.socket = new WebSocket('ws://localhost:3000');
@@ -19,19 +18,17 @@ const setupWebSocket = (dispatch) => {
     const data = JSON.parse(event.data);
 
     switch(data.type) {
-      case types.SHAKE_HANDS:
-        break;
       case types.USER_ADD:
         dispatch(addUser(data.nickname));
         break;
       case types.USER_LIST:
         dispatch(data);
         break;
-      case ROOM_JOIN:
+      case types.ROOM_JOIN:
         dispatch(joinRoom(data.roomId, data.nickname));
         break;
-      case types.ROOM_LIST:
-        dispatch(addRoomList(data.rooms));
+      case types.CHANNEL_LIST:
+        dispatch(addChannelList(data.channels));
         break;
       case types.NEW_MESSAGE:
         dispatch(data);

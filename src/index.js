@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Route, BrowserRouter } from 'react-router-dom';
-import './index.css';
+import { Route, HashRouter } from 'react-router-dom';
 import App from './App';
 import Chat from './components/chat.component';
 
@@ -14,6 +13,8 @@ import registerServiceWorker from './registerServiceWorker';
 import reducers from './reducers';
 import sagas from './sagas';
 
+import './index.css';
+
 const sagaMiddleware = createSagaMiddleware();
 const store = createStore(
   reducers,
@@ -25,14 +26,14 @@ const socket = setupWebSocket(store.dispatch);
 sagaMiddleware.run(sagas, { socket });
 
 ReactDOM.render(
-  <BrowserRouter>
+  <HashRouter>
     <Provider store={store}>
       <div>
         <Route exact path="/" component={App} />
-        <Route exact path="/chat/:nickname" component={Chat} />
+        <Route path="/chat/:nickname" render={() => <Chat dispatch={store.dispatch} />} />
       </div>
     </Provider>
-  </BrowserRouter>,
+  </HashRouter>,
   document.getElementById('root')
 );
 registerServiceWorker();

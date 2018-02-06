@@ -2,6 +2,7 @@
   align-self: center;
   list-style: none;
   color: #c0c0c0;
+  font-weight: lighter;
   display: flex;
   flex: 1;
   flex-direction: column;

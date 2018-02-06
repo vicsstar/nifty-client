@@ -1,9 +1,10 @@
 export const SHAKE_HANDS = 'SHAKE_HANDS';
 export const USER_LIST = 'USER_LIST';
 export const USER_ADD = 'USER_ADD';
+export const USER_LEAVE = 'USER_LEAVE';
 export const MESSAGE_ADD = 'MESSAGE_ADD';
 export const NEW_MESSAGE = 'NEW_MESSAGE';
 export const OWN_NEW_MESSAGE = 'OWN_NEW_MESSAGE';
-export const ROOM_LIST = 'ROOM_LIST';
+export const CHANNEL_LIST = 'CHANNEL_LIST';
 export const ROOM_JOIN = 'ROOM_JOIN';
 export const ROOM_LEAVE = 'ROOM_LEAVE';

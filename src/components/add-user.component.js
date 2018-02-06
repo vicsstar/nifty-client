@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Route, Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { addUser } from '../actions';
+import mapDispatchToProps from './mappings';
 
 import './add-user.component.css';
 
@@ -18,7 +19,7 @@ class AddUser extends Component {
     if (!nickname) return;
 
     this.props.addUser(nickname);
-    history.push('/chat');
+    history.push(`/chat/${nickname}`);
   }
 
   render() {
@@ -39,12 +40,6 @@ class AddUser extends Component {
     );
   }
 }
-
-const mapDispatchToProps = dispatch => ({
-  addUser: nickname => {
-    dispatch(addUser(nickname));
-  }
-});
 
 AddUser.propTypes = {
   addUser: PropTypes.func.isRequired

@@ -43,3 +43,7 @@
 #channel-list .items li.selected {
   background-color: #4094ED;
 }
+
+#channel-list .items li.selected a {
+  color: white;
+}

@@ -38,14 +38,3 @@ export const addChannelList = channels => ({
   type: types.CHANNEL_LIST,
   channels
 });
-
-export const joinRoom = (roomId, nickname) => ({
-  type: types.ROOM_JOIN,
-  roomId,
-  nickname
-});
-
-export const leaveRoom = nickname => ({
-  type: types.ROOM_LEAVE,
-  nickname
-});

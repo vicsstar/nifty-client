@@ -17,16 +17,18 @@ function* watchAll(params) {
     takeEvery(types.NEW_MESSAGE, action => {
       const { author, message, id, channelId, isPrivate, time } = action;
       return {
-        message: { author, message, id, channelId, isPrivate, time }
+         author, message, id, channelId, isPrivate, time
       };
     }),
     takeEvery(types.OWN_NEW_MESSAGE, action => {
-      console.log('Reducer encountered.');
       const { author, message, id, channelId, isPrivate, time } = action;
       return {
-        message: { author, message, id, channelId, isPrivate, time }
+         author, message, id, channelId, isPrivate, time
       };
     }),
+    takeEvery(types.USER_LIST, action => ({
+      users: action.users
+    })),
     takeEvery(types.CHANNEL_LIST, action => ({
       channels: action.channels
     }))

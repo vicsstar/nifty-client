@@ -15,6 +15,18 @@ class ChatRoom extends Component {
     });
   }
 
+  isPrivate() {
+    return this.props.channel.id && this.props.channel.id.indexOf('|') !== -1;
+  }
+
+  isMe() {
+    return this.props.channel.name === this.props.nickname;
+  }
+
+  hasDescription() {
+    return this.isPrivate() || this.props.channel.description;
+  }
+
   render() {
     let messagesView;
 
@@ -29,16 +41,20 @@ class ChatRoom extends Component {
     return (
       <div className="chat-view">
         <header>
-          <h4>#{this.props.channel.name}</h4>
-          <p className={this.props.channel.description ? 'has-desc' : ''}>
+          <h4>
+            {this.isPrivate() ? '@':'#'}
+            {this.props.channel.name}
+          </h4>
+          <p className={this.hasDescription() ? 'has-desc' : ''}>
             {this.props.channel.description}
+            {this.isPrivate() ? (this.isMe() ? 'You can put down notes here.' :
+              `Your conversation with ${this.props.channel.name}`) : this.props.channel.description}
           </p>
         </header>
         <ul className="messages-view" ref="messagesView">{messagesView}</ul>
         <MessageInput
-          displayName={this.props.channel.name}
           nickname={this.props.nickname}
-          channelId={this.props.channel.id}
+          channel={this.props.channel}
           addMessage={data => this.props.addMessage(data)}
           addOwnMessage={data => this.props.addOwnMessage(data)} />
       </div>

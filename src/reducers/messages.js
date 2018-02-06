@@ -14,7 +14,6 @@ const messages = (state = [], data) => {
         }
       ]);
     case types.OWN_NEW_MESSAGE:
-    console.log('New message arrived.');
       return state.concat([
         {
           message: data.message,

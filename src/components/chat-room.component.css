@@ -8,9 +8,8 @@
   overflow-y: scroll;
   border-radius: 3px;
   height: 85%;
-  max-height: 85%;
-  margin: 10px 0;
-  padding-top: 5px;
+  margin: 0;
+  padding-top: 15px;
   padding-bottom: 7px;
   display: flex;
   flex-direction: column;

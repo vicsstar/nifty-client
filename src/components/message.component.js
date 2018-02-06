@@ -15,15 +15,17 @@ class Message extends Component {
   render() {
     return (
       <div className={`message-view ${this.fromMe() ? 'me' : ''}`}>
-        <span className="author">{this.props.message.author}</span>
-        <div className="content">
-          <span className="message" dangerouslySetInnerHTML={
-            {__html: this.stripTags(this.props.message.message).replace(/\n/g, '<br/>')}
-          }></span>
+        <div>
+          <span className="author">{this.props.message.author}</span>
           <span className="time">{
             Intl.DateTimeFormat({}, { hour12: true, hour: 'numeric', minute: 'numeric' })
               .format(new Date(this.props.message.time))
           }</span>
+        </div>
+        <div className="content">
+          <span className="message" dangerouslySetInnerHTML={
+            {__html: this.stripTags(this.props.message.message).replace(/\n/g, '<br/>')}
+          }></span>
         </div>
       </div>
     );

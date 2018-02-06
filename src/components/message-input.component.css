@@ -5,7 +5,7 @@
 
 .message-input-view .message-input {
   align-self: flex-end;
-  font-size: 14px;
+  font-size: 16px;
   padding: 12px;
   margin: 20px;
   border: 2px solid #EAEAEA;
@@ -14,4 +14,19 @@
   min-height: 48px;
   height: 48px;
   max-height: 200px;
+}
+
+.message-input-view button {
+  align-self: flex-end;
+  border: none;
+  background: none;
+  background-color: none;
+  margin: 20px 20px 20px 0;
+  font-size: 30px;
+}
+
+.message-input-view .nifty-emoji-picker {
+  position: absolute;
+  right: 20px;
+  bottom: 75px;
 }

@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Route, Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { addUser } from '../actions';
 import mapDispatchToProps from './mappings';
 
 import './add-user.component.css';
@@ -33,7 +32,12 @@ class AddUser extends Component {
         <div className="add-user">
           <label htmlFor="nickname" className="greeting">Hello.</label>
           <input type="text" ref={(input) => {this.nickname = input;}}
-            className="nickname" placeholder="Choose a nickname" required/>
+            className="nickname" placeholder="Choose a nickname"
+            onKeyUp={e => {
+              if (e.key === 'Enter') {
+                this.doEnter(history);
+              }
+            }}/>
           <button className="btn-default" onClick={() => this.doEnter(history)}>ENTER</button>
         </div>
       )} />

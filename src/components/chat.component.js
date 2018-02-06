@@ -19,9 +19,9 @@ class Chat extends Component {
     };
   }
 
-  componentDidUpdate(nextState) {
+  componentWillUpdate(nextState) {
     if (nextState.channels && nextState.channels !== this.state.channels) {
-      let activeChannel = {};
+      let activeChannel = this.state.activeChannel;
 
       if (!this.state.activeChannel.id && nextState.channels.length !== 0) {
         activeChannel = nextState.channels[0];
@@ -36,16 +36,19 @@ class Chat extends Component {
     if (nextState.messages && nextState.messages !== this.state.messages) {
       const filteredMessages = this.filterMessages(nextState.messages);
 
-      this.setState({
-        messages: nextState.messages,
-        filteredMessages
+      this.setState(() => {
+        return {
+          messages: nextState.messages,
+          filteredMessages
+        }
       });
     }
 
     if (nextState.users && nextState.users !== this.state.users) {
-      this.setState({ users: nextState.users });
+      this.setState(() => {
+        return { users: nextState.users };
+      });
     }
-    console.log(nextState.messages);
   }
 
   componentDidMount() {
@@ -62,18 +65,20 @@ class Chat extends Component {
     }
   }
 
-  filterMessages(messages) {
+  filterMessages(messages, channel) {
     return messages.filter(message => (
-      message.channelId === this.state.activeChannel.id
+      message.channelId === (channel || this.state.activeChannel).id
     ));
   }
 
   openChannel(channel) {
-    const filteredMessages = this.filterMessages(this.state.messages);
-    this.setState({
+    const filteredMessages =
+      this.filterMessages(this.state.messages, channel);
+
+    this.setState(() => ({
       activeChannel: channel,
       filteredMessages
-    });
+    }));
   }
 
   render() {

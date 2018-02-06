@@ -1,6 +1,4 @@
 import {
-  joinRoom,
-  leaveRoom,
   addMessage,
   addOwnMessage,
   addUser,

@@ -6,7 +6,10 @@ import Users from '../components/users.component';
 const setup = (users = []) => {
   const props = {
     nickname: 'vicsstar',
-    users
+    users,
+    activeChannel: {
+      id: '1002'
+    }
   };
 
   Enzyme.configure({ adapter: new Adapter() });
@@ -31,7 +34,7 @@ describe('Users', () => {
     const { enzymeWrapper } = setup([{
       nickname: 'vicsstar'
     }]);
-    expect(enzymeWrapper.find('span').text()).toEqual('vicsstar (You)');
+    expect(enzymeWrapper.find('li').text()).toEqual('@vicsstar (you)');
   });
 
   it('should list users', () => {

@@ -8,6 +8,9 @@ const setup = (addMessage = jest.fn(), addOwnMessage = jest.fn()) => {
   const props = {
     nickname: 'vicsstar',
     displayName: 'vicsstar',
+    channel: {
+      id: '1002'
+    },
     addMessage,
     addOwnMessage
   };
@@ -38,13 +41,6 @@ describe('MessageInput', () => {
     const { enzymeWrapper } = setup();
 
     expect(enzymeWrapper.find('.message-input-view textarea').length).toBe(1);
-  });
-
-  it('should call addMessage and addOwnMessage when send button clicked', () => {
-    enzymeWrapper.ref('message').value = 'Hello World';
-    enzymeWrapper.find('button').simulate('click');
-    expect(addMessage.calledOnce).toBeTruthy();
-    expect(addOwnMessage.calledOnce).toBeTruthy();
   });
 
   it('should call addMessage and addOwnMessage when Enter key pressed', () => {

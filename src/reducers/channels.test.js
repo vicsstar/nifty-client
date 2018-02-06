@@ -2,7 +2,7 @@ import { CHANNEL_LIST } from "../actions/constants/action-types";
 import channels from "./channels";
 
 it('Channels reducer - should handle CHANNEL_LIST action', () => {
-  const room = {
+  const channel = {
     type: CHANNEL_LIST,
     channels: [{ channelId: '1002' }]
   };

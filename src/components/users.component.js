@@ -26,7 +26,7 @@ class Users extends Component {
             }
             key={user.nickname}
             link={`#/user/${user.nickname}`}
-            name={`@${user.nickname} ${this.isMe(user.nickname) ? ' (you)' : ''}`}
+            name={`@${user.nickname} ${this.isMe(user.nickname) ? '(you)' : ''}`}
             onOpenChannel={data =>
               this.props.onOpenChannel({
                 name: user.nickname,
@@ -46,7 +46,8 @@ Users.propTypes = {
     PropTypes.shape({
       nickname: PropTypes.string.isRequired
     })
-  ).isRequired
+  ).isRequired,
+  activeChannel: PropTypes.shape()
 };
 
 export default Users;

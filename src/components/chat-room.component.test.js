@@ -8,6 +8,9 @@ const setup = () => {
     messages: [],
     displayName: 'vicsstar',
     nickname: 'vicsstar',
+    channel: {
+      id: '1002'
+    },
     addMessage: jest.fn(),
     addOwnMessage: jest.fn()
   };

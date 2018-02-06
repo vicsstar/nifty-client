@@ -17,7 +17,7 @@ export const addOwnMessage = (
 ) => ({
   type: types.OWN_NEW_MESSAGE,
   author: nickname,
-  message,
+  message: message.trim(),
   channelId,
   isPrivate,
   time,

@@ -96,7 +96,7 @@ class MessageInput extends Component {
           }}></textarea>
           {this.state.emojiOpen ? (
             <div className="nifty-emoji-picker">
-              <EmojiPicker onEmojiClick={this.handleEmoji}/>
+              <EmojiPicker onEmojiClick={this.handleEmoji} emojiResolution={64}/>
             </div>
           ) : ''}
           <button onClick={() => this.setState({ emojiOpen: !this.state.emojiOpen })}>&#x1F600;</button>

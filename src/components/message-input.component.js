@@ -31,7 +31,7 @@ class MessageInput extends Component {
     const message = messageBox.value;
     const selectionStart = messageBox.selectionStart;
 
-    messageBox .value = [
+    messageBox.value = [
       message.slice(0, selectionStart),
       emojiPic,
       message.slice(messageBox.selectionEnd)
@@ -99,7 +99,9 @@ class MessageInput extends Component {
               <EmojiPicker onEmojiClick={this.handleEmoji} emojiResolution={64}/>
             </div>
           ) : ''}
-          <button onClick={() => this.setState({ emojiOpen: !this.state.emojiOpen })}>&#x1F600;</button>
+          <button onClick={() => this.setState({ emojiOpen: !this.state.emojiOpen })}>
+            <span role="img" aria-label="pick emoji">&#x1F600;</span>
+          </button>
       </div>
     );
   }

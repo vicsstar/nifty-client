@@ -5,7 +5,8 @@ import {
 } from '../actions';
 
 const setupWebSocket = (dispatch) => {
-  this.socket = new WebSocket('ws://localhost:3000');
+  var host = window.location.origin.replace(/^http/, 'ws')
+  this.socket = new WebSocket(host);
   this.socketOpen = false;
 
   this.socket.onmessage = (event) => {

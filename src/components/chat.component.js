@@ -42,6 +42,7 @@ class Chat extends Component {
           filteredMessages
         }
       });
+      this.markUnreadChannel(nextState.messages);
     }
 
     if (nextState.users && nextState.users !== this.state.users) {
@@ -72,13 +73,33 @@ class Chat extends Component {
   }
 
   openChannel(channel) {
-    const filteredMessages =
-      this.filterMessages(this.state.messages, channel);
+    const filteredMessages = this.filterMessages(this.state.messages, channel);
+    filteredMessages.forEach(message => {
+      if (message.isNew) {
+        message.isNew = false;
+      }
+    });
+
+    channel.hasNew = false;
 
     this.setState(() => ({
       activeChannel: channel,
       filteredMessages
     }));
+  }
+
+  markUnreadChannel(messages) {
+    const recentMessage = messages.reverse().find(message => message.isNew === true);
+
+    if (recentMessage) {
+      const unreadChannel = this.state.channels.find(channel => (
+        channel.id !== this.state.activeChannel.id && channel.id === recentMessage.channelId)
+      );
+
+      if (unreadChannel) {
+        unreadChannel.hasNew = true;
+      }
+    }
   }
 
   render() {

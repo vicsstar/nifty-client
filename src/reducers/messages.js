@@ -9,6 +9,7 @@ const messages = (state = [], data) => {
           author: data.author,
           channelId: data.channelId,
           isPrivate: data.isPrivate,
+          isNew: true,
           time: data.time,
           id: data.id
         }

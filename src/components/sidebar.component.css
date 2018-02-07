@@ -35,3 +35,8 @@
   font-weight: lighter;
   padding-top: 5px;
 }
+
+#sidebar .has-new {
+  color: white !important;
+  font-weight: 800;
+}

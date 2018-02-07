@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Route, Redirect } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import mapDispatchToProps from './mappings';
 
@@ -17,16 +17,17 @@ class AddUser extends Component {
 
     if (!nickname) return;
 
-    this.props.addUser(nickname);
+    // this.props.addUser(nickname);
     history.push(`/chat/${nickname}`);
   }
 
-  render() {
-    const nickname = localStorage.getItem('nickname');
-    if (nickname) {
-      return <Redirect to={`/chat/${nickname}`} />;
+  componentDidMount() {
+    if (this.nickname) {
+      this.nickname.focus();
     }
+  }
 
+  render() {
     return (
       <Route render={({ history }) => (
         <div className="add-user">

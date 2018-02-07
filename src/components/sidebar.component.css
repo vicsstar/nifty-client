@@ -1,6 +1,7 @@
 #sidebar {
   border-color: 1px solid 292B39;
   background-color: #333647;
+  overflow-y: scroll;
 }
 
 @media(max-width: 1024px) {

@@ -46,7 +46,6 @@ class ChatRoom extends Component {
             {this.props.channel.name}
           </h4>
           <p className={this.hasDescription() ? 'has-desc' : ''}>
-            {this.props.channel.description}
             {this.isPrivate() ? (this.isMe() ? 'You can put down notes here.' :
               `Your conversation with ${this.props.channel.name}`) : this.props.channel.description}
           </p>

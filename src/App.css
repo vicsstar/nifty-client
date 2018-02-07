@@ -49,6 +49,14 @@
   justify-content: center;
 }
 
+#container #main h2 {
+  padding: 18px;
+}
+
+#container #main .header-main {
+  border-bottom: 1px solid lightgray;
+}
+
 .btn-default {
   font-size: 16px;
   font-weight: bold;

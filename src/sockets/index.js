@@ -4,12 +4,12 @@ import {
   addChannelList
 } from '../actions';
 
-const setupWebSocket = (dispatch) => {
-  const host = window.location.origin.replace(/^http/, 'ws');
-  // const host = 'ws://localhost:3000';
+const setupWebSocket = dispatch => {
+  // const host = window.location.origin.replace(/^http/, 'ws');
+  const host = 'ws://localhost:3000';
   this.socket = null;
 
-  const onmessage = (event) => {
+  const onmessage = event => {
     const data = JSON.parse(event.data);
 
     switch(data.type) {
@@ -39,7 +39,9 @@ const setupWebSocket = (dispatch) => {
   const nextWaitTime = previousTime => previousTime * 2 - 250;
 
   this.waitForConnection = (data, func, waitTime) => {
-    if (!this.socket) {
+    if (!this.socket ||
+        this.socket.readyState === WebSocket.CLOSED ||
+        this.socket.readyState === WebSocket.CLOSING) {
       this.socket = new WebSocket(host);
       this.socket.onmessage = onmessage;
     }
@@ -50,7 +52,6 @@ const setupWebSocket = (dispatch) => {
       waitTime = nextWaitTime(waitTime);
 
       if (this.socket.readyState === WebSocket.OPEN) {
-        this.sendData(data);
         func();
       } else {
         this.waitForConnection(data, func, waitTime);
@@ -58,13 +59,13 @@ const setupWebSocket = (dispatch) => {
     }, waitTime);
   }
 
-  this.sendData = function(data) {
+  this.sendData = data => {
     this.socket.send(JSON.stringify(data));
   };
 
-  this.send = function(data) {
+  this.send = data => {
     this.waitForConnection(data, () => {
-      console.log('Data sent.');
+      this.sendData(data);
     });
   }
   return this;

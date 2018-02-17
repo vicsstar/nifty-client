@@ -1,2 +1,2 @@
 - Run `yarn` or `yarn install` to install all the dependencies.
-- The run `yarn start` to start the web application.
+- Then run `yarn start` to start the web application.

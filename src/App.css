@@ -2,6 +2,7 @@
   box-sizing: border-box;
   padding: 0;
   margin: 0;
+  /* letter-spacing: 0.5px; */
 }
 
 @media(max-width: 640px) {
@@ -34,10 +35,6 @@
     width: 540px;
     padding-bottom: 20px;
   }
-
-  header {
-    padding: 15px 0 !important;
-  }
 }
 
 #container * {
@@ -52,17 +49,12 @@
   justify-content: center;
 }
 
-header {
-  border-bottom: 1px solid #DEDEDE;
-  padding: 0 0 15px 0;
-  margin: 0 0 20px 0;
+#container #main h2 {
+  padding: 18px;
 }
 
-header h3 {
-  font-size: 24px;
-  font-weight: 400;
-  padding: 0;
-  margin: 0;
+#container #main .header-main {
+  border-bottom: 1px solid lightgray;
 }
 
 .btn-default {

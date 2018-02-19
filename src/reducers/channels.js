@@ -1,12 +1,12 @@
 import * as types from '../actions/constants/action-types';
 
-const rooms = (state = [], data) => {
+const channels = (state = [], data) => {
   switch(data.type) {
-    case types.ROOM_LIST:
-      return data.rooms;
+    case types.CHANNEL_LIST:
+      return data.channels;
     default:
       return state;
   }
 };
 
-export default rooms;
+export default channels;

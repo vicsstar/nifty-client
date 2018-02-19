@@ -12,7 +12,8 @@ describe('Messages reducer', () =>{
       type: types.NEW_MESSAGE,
       message: 'Testing',
       author: 'vicsstar',
-      roomId: '1002',
+      channelId: '1002',
+      time: new Date().getTime(),
       isPrivate: false,
       id
     };
@@ -36,7 +37,8 @@ describe('Messages reducer', () =>{
       type: types.OWN_NEW_MESSAGE,
       message: 'Testing',
       author: 'vicsstar',
-      roomId: '1002',
+      channelId: '1002',
+      time: new Date().getTime(),
       isPrivate: false,
       id
     };

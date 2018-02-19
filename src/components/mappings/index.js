@@ -1,22 +1,22 @@
 import {
-  joinRoom,
-  leaveRoom,
   addMessage,
-  addOwnMessage
+  addOwnMessage,
+  addUser,
+  removeUser
 } from '../../actions';
 
 export default dispatch => ({
-  joinRoom: (roomId, nickname) => {
-    dispatch(joinRoom(roomId, nickname));
+  addUser: nickname => {
+    dispatch(addUser(nickname));
   },
-  leaveRoom: nickname => {
-    dispatch(leaveRoom(nickname));
+  removeUser: nickname => {
+    dispatch(removeUser(nickname));
   },
   addMessage: data => {
     const message = addMessage(
       data.message,
       data.nickname,
-      data.roomId,
+      data.channelId,
       data.isPrivate,
       data.time
     );

@@ -1,0 +1,42 @@
+#sidebar {
+  border-color: 1px solid 292B39;
+  background-color: #333647;
+  overflow-y: scroll;
+}
+
+@media(max-width: 1024px) {
+  #sidebar {
+    width: 20%;
+  }
+}
+
+@media(min-width: 1280px) {
+  #sidebar {
+    width: 15%;
+  }
+}
+
+#sidebar header {
+  margin: 25px 0 35px 20px;
+  color: white;
+}
+
+#sidebar header h3 {
+  font-size: 18px;
+  font-weight: 400;
+  padding: 0;
+  margin: 0;
+  letter-spacing: 0.5px;
+}
+
+#sidebar header p {
+  color: #DFDFDF;
+  font-size: 14px;
+  font-weight: lighter;
+  padding-top: 5px;
+}
+
+#sidebar .has-new {
+  color: white !important;
+  font-weight: 800;
+}

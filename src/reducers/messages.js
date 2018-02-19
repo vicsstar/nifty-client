@@ -7,9 +7,10 @@ const messages = (state = [], data) => {
         {
           message: data.message,
           author: data.author,
-          time: data.time,
-          roomId: data.roomId,
+          channelId: data.channelId,
           isPrivate: data.isPrivate,
+          isNew: true,
+          time: data.time,
           id: data.id
         }
       ]);
@@ -18,9 +19,9 @@ const messages = (state = [], data) => {
         {
           message: data.message,
           author: data.author,
-          time: data.time,
-          roomId: data.roomId,
+          channelId: data.channelId,
           isPrivate: data.isPrivate,
+          time: data.time,
           id: data.id
         }
       ]);

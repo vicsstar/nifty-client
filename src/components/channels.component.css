@@ -1,0 +1,49 @@
+#channel-list {
+  padding-bottom: 19px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  justify-content: space-between;
+}
+
+#channel-list h4 {
+  color: #bebebe;
+  font-size: 16px;
+  font-weight: 300;
+  padding: 0 17px 10px 17px;
+  padding-bottom: 10px;
+}
+
+#channel-list .items {
+  list-style: none;
+}
+
+#channel-list .items li a {
+  display: block;
+  padding: 0 17px;
+  color: #bebebe;
+  font-size: 14px;
+  font-weight: lighter;
+  text-decoration: none;
+  line-height: 28px;
+}
+
+#channel-list .items li a:visited {
+  color: #bebebe;
+}
+
+#channel-list .items li:hover {
+  background-color: #235280;
+}
+
+#channel-list .items li:hover a {
+  cursor: pointer;
+}
+
+#channel-list .items li.selected {
+  background-color: #4094ED;
+}
+
+#channel-list .items li.selected a {
+  color: white;
+}

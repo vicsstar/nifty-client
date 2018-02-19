@@ -1,14 +1,32 @@
 .message-input-view {
   display: flex;
-  flex: 1;
-  justify-content: space-between;
+  justify-content: center;
 }
 
 .message-input-view .message-input {
-  font-size: 14px;
-  width: 100vw;
-  padding: 10px;
-  margin-right: 10px;
-  border: 0.5px solid #EAEAEA;
-  border-radius: 3px;
+  align-self: flex-end;
+  font-size: 15px;
+  padding: 12px;
+  margin: 20px;
+  border: 2px solid #EAEAEA;
+  border-radius: 5px;
+  flex-grow: 1;
+  min-height: 48px;
+  height: 48px;
+  max-height: 200px;
+}
+
+.message-input-view button {
+  align-self: flex-end;
+  border: none;
+  background: none;
+  background-color: none;
+  margin: 20px 20px 20px 0;
+  font-size: 30px;
+}
+
+.message-input-view .nifty-emoji-picker {
+  position: absolute;
+  right: 20px;
+  bottom: 75px;
 }

@@ -15,6 +15,18 @@ class ChatRoom extends Component {
     });
   }
 
+  isPrivate() {
+    return this.props.channel.id && this.props.channel.id.indexOf('|') !== -1;
+  }
+
+  isMe() {
+    return this.props.channel.name === this.props.nickname;
+  }
+
+  hasDescription() {
+    return this.isPrivate() || this.props.channel.description;
+  }
+
   render() {
     let messagesView;
 
@@ -28,10 +40,20 @@ class ChatRoom extends Component {
 
     return (
       <div className="chat-view">
+        <header>
+          <h4>
+            {this.isPrivate() ? '@':'#'}
+            {this.props.channel.name}
+          </h4>
+          <p className={this.hasDescription() ? 'has-desc' : ''}>
+            {this.isPrivate() ? (this.isMe() ? 'You can put down notes here.' :
+              `Your conversation with ${this.props.channel.name}`) : this.props.channel.description}
+          </p>
+        </header>
         <ul className="messages-view" ref="messagesView">{messagesView}</ul>
         <MessageInput
-          displayName={this.props.displayName}
           nickname={this.props.nickname}
+          channel={this.props.channel}
           addMessage={data => this.props.addMessage(data)}
           addOwnMessage={data => this.props.addOwnMessage(data)} />
       </div>
@@ -48,8 +70,6 @@ ChatRoom.propTypes = {
       id: PropTypes.number.isRequired
     })
   ).isRequired,
-  displayName: PropTypes.string.isRequired,
-  nickname: PropTypes.string.isRequired,
   addMessage: PropTypes.func.isRequired,
   addOwnMessage: PropTypes.func.isRequired
 }

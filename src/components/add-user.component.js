@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Route, Redirect } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { addUser } from '../actions';
+import mapDispatchToProps from './mappings';
 
 import './add-user.component.css';
 
@@ -17,33 +17,34 @@ class AddUser extends Component {
 
     if (!nickname) return;
 
-    this.props.addUser(nickname);
-    history.push('/rooms');
+    // this.props.addUser(nickname);
+    history.push(`/chat/${nickname}`);
+  }
+
+  componentDidMount() {
+    if (this.nickname) {
+      this.nickname.focus();
+    }
   }
 
   render() {
-    if (localStorage.getItem('nickname')) {
-      return <Redirect to="/rooms"/>;
-    }
-
     return (
       <Route render={({ history }) => (
         <div className="add-user">
           <label htmlFor="nickname" className="greeting">Hello.</label>
           <input type="text" ref={(input) => {this.nickname = input;}}
-            className="nickname" placeholder="Choose a nickname" required/>
+            className="nickname" placeholder="Choose a nickname"
+            onKeyUp={e => {
+              if (e.key === 'Enter') {
+                this.doEnter(history);
+              }
+            }}/>
           <button className="btn-default" onClick={() => this.doEnter(history)}>ENTER</button>
         </div>
       )} />
     );
   }
 }
-
-const mapDispatchToProps = dispatch => ({
-  addUser: nickname => {
-    dispatch(addUser(nickname));
-  }
-});
 
 AddUser.propTypes = {
   addUser: PropTypes.func.isRequired

@@ -1,17 +1,20 @@
 import React from 'react';
 import Enzyme, { mount } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
-import MemberList from '../components/member-list.component';
+import Users from '../components/users.component';
 
 const setup = (users = []) => {
   const props = {
     nickname: 'vicsstar',
-    users
+    users,
+    activeChannel: {
+      id: '1002'
+    }
   };
 
   Enzyme.configure({ adapter: new Adapter() });
   const enzymeWrapper = mount(
-    <MemberList {...props} />
+    <Users {...props} />
   );
 
   return {
@@ -20,7 +23,7 @@ const setup = (users = []) => {
   };
 };
 
-describe('MemberList', () => {
+describe('Users', () => {
   it('should render itself', () => {
     const { enzymeWrapper } = setup();
 
@@ -31,7 +34,7 @@ describe('MemberList', () => {
     const { enzymeWrapper } = setup([{
       nickname: 'vicsstar'
     }]);
-    expect(enzymeWrapper.find('span').text()).toEqual('vicsstar (You)');
+    expect(enzymeWrapper.find('li').text()).toEqual('@vicsstar (you)');
   });
 
   it('should list users', () => {
